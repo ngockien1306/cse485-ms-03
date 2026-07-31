@@ -1,9 +1,10 @@
 <?php
 session_start();
 
+// Xóa toàn bộ biến session
 $_SESSION = [];
 
-
+// Xóa cookie session (nếu có)
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -17,7 +18,9 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
+// Hủy session
 session_destroy();
 
+// Chuyển về trang đăng nhập
 header("Location: login.php");
 exit;
